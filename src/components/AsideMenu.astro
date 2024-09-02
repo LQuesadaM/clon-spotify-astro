@@ -2,18 +2,20 @@
 import LibraryIcon from "@icons/Library.astro";
 import HomeIcon from "@icons/Home.astro";
 import Search from "@icons/Search.astro";
+import SideMenuItem from "@components/SideMenuItem.astro";
+import SideMenuCard from "@components/SideMenuCard.astro";
 
-import SideMenuItem from "./SideMenuItem.astro";
+import { playlists } from "@lib/data.ts";
 ---
 
 <nav class="flex flex-col flex-1 gap-2">
   <div class="bg-zinc-900 rounded-lg p-2">
     <ul>
-      <SideMenuItem href="./">
+      <SideMenuItem href="/">
         <HomeIcon />
         Home
       </SideMenuItem>
-      <SideMenuItem href="./">
+      <SideMenuItem href="/">
         <Search />
         Search
       </SideMenuItem>
@@ -23,8 +25,10 @@ import SideMenuItem from "./SideMenuItem.astro";
     <ul>
       <SideMenuItem>
         <LibraryIcon />
-        Tu libreria
+        Tu biblioteca
       </SideMenuItem>
+
+      {playlists.map((playlist) => <SideMenuCard playlist={playlist} />)}
     </ul>
   </div>
 </nav>
